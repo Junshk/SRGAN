@@ -8,18 +8,18 @@ function make_net(option)
 
 local net, criterion
 
-if type(option) ~= 'table' then assert(nil, 'wrong net option') end
+if type(option) ~= 'string' then assert(nil, 'wrong net option') end
 
-  if option.type == 'ResMSE' then
+  if option == 'ResMSE' then
     net = SRResnet()
     criterion = nn.MSECriterion()
-  elseif option.type == 'ResVGG' then
+  elseif option == 'ResVGG' then
     net = SRResnet()
     criterion = VGG54()
-  elseif option.type == 'GANMSE' then
+  elseif option == 'GANMSE' then
     net = SRGAN()
     criterion = nn.MSECriterion()
-  elseif option.type == 'GANVGG' then
+  elseif option == 'GANVGG' then
     net = SRGAN()
     criterion = VGG54()
   else assert(nil, 'wrong net type') end

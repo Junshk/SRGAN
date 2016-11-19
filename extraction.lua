@@ -15,7 +15,7 @@ function extractData(batch_size,patch_size,ch)
 
 local ch = ch or 3
 local data_fold = fold
-local img_iter = batch_size
+local img_iter = 1--batch_size
 
 
 if ch == 3 then data_fold = data_fold .. rgb_fold
@@ -47,7 +47,7 @@ local LR = image.load(LRname)
 local h, w = LR:size(2), LR:size(3)
 
 for i = 1, img_iter do
-
+if math.random(2) == 1 then GT = image.hflip(GT) ; LR =image.hflip(LR) end
 local crop_sx, crop_sy = math.random(0,w-patch_size), math.random(0,h-patch_size)
 gt_mat[{{iter}}] = preprocess(image.crop(GT,crop_sx*scale,crop_sy*scale,crop_sx*scale+patch_size*scale,crop_sy*scale+patch_size*scale))
 lr_mat[{{iter}}] = preprocess(image.crop(LR,crop_sx,crop_sy,crop_sx+patch_size,crop_sy+patch_size))
