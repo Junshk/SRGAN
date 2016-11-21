@@ -7,8 +7,8 @@ function VGG54()
 local VGGloss = {}
 local VGG = loadcaffe.load('deplot.prototxt','VGG_ILSVRC_19_layer.caffemodel','cudnn')
 
-for iter = , do
-VGG.remove[iter]
+for iter = 1,1 do
+VGG:remove(iter)
 
 end
 
