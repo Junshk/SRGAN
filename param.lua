@@ -1,8 +1,12 @@
-
+require 'cutorch'
+cutorch.setDevice(1)
+torch.setnumthreads(2)
 scale = 4
-
--------fold-------------------
-local fold ='data/SR_ILSVRC2015_val_4_'
+batch_size = 16
+patch_size =24
+unit_size =batch_size
+-------fold------------------
+local fold ='/SR_ILSVRC2015_val_4_'
 
 rgb_fold = fold.. 'rgb/' 
 Y_fold = fold.. 'Y/'
@@ -19,9 +23,13 @@ test_iter = 10
 
 -----test--------------------
 test_flag = true
+----criterion----------------
+loss_type = {mse = 1 , adv =0, vgg=0}
 
-savefold = 'result/'
-setnumber =5
 
- setname ='Set' ..setnumber
+-----------------------------
+continue = false--true
+img_type = 'rgb'--'yuv'
 
+nettype = 'ResVGG'
+netname = nettype .. '_1207'

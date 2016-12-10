@@ -7,7 +7,7 @@ local function blocks(net)
 local concat = nn.ConcatTable()
 local base = nn.Sequential()
 
-base:add(nn.ReLU(true))
+--base:add(nn.ReLU(true))
 base:add(nn.SpatialConvolution(64,64,3,3,1,1,1,1))
 base:add(nn.SpatialBatchNormalization(64))
 base:add(nn.ReLU(true))
@@ -25,10 +25,10 @@ end
 function SRResnet()
 
 local net = nn.Sequential()
-local block_num = 15
+local block_num = 16
 local C =3
 local dconvK = 4
-local init_k = 17
+local init_k = 3
 local init_p = math.floor(init_k/2)
 net:add(nn.SpatialConvolution(C,64,init_k,init_k,1,1,init_p,init_p))
 net:add(nn.ReLU(true))
@@ -44,6 +44,8 @@ net:add(nn.SpatialFullConvolution(64,64,dconvK,dconvK,2,2,1,1))
 net:add(nn.ReLU(true))
 
 -- CONV
+init_k = 17
+init_p = 8
 net:add(nn.SpatialConvolution(64,C,init_k,init_k,1,1,init_p,init_p))
 return net 
 end

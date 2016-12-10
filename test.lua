@@ -2,7 +2,7 @@ require 'cunn'
 require 'cudnn'
 require 'image'
 
-local netname = 'ResMSE'..'.t7'
+local netname = 'ResMSE_1'..'.t7'
 
 local net =torch.load(netname)
 

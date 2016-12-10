@@ -24,7 +24,7 @@ for i=1:length(folder)
   
   y_sr = rgb2ycbcr(sr);
   y_sr = y_sr(:,:,1);
-  PSNR = psnr(y_sr,y_hr);
+  PSNR = psnr(y_sr,y_hr,235-16);
   sum_of_psnr = sum_of_psnr + PSNR;
   
   img_num = img_num + 1;
