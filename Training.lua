@@ -153,7 +153,7 @@ for iteration =start_iter,enditer do
 end
 model:clearState()
   torch.save(netname..'trainerr.t7',losses)
-  torch.save(netname..'testerr.t7',testerres)
+  torch.save(netname..'testerr.t7',testloss)
 
 
 end --function end
